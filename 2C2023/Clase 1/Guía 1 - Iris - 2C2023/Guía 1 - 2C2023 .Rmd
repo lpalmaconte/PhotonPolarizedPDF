@@ -21,14 +21,16 @@ body {
 ```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include=FALSE)
+knitr::opts_chunk$set(include=FALSE, eval=FALSE)
 ```
 
 Les proponemos comenzar a analizar un set de datos (conjunto de datos)  a partir de una serie de consignas. Para esto vamos a utilizar el lenguaje de programación R, utilizando **RStudio** como entorno de desarrollo integrado (IDE). Si es que no saben de qué se trata, este último término lo verán en detalle en la materia **Programación I**. Por ahora quedémonos con la idea de que **RStudio** es el *programa* que vamos a usar para usar R. 
 
 ### Conociendo R y RStudio
 
-1. Abran **RStudio** en la computadora que estén trabajando. Deberían encontrarse con una pantalla como la siguiente:![](RSTUDIO_IMAGEN.png){width=70%}
+1. Abran **RStudio** en la computadora que estén trabajando. Deberían encontrarse con una pantalla como la siguiente:
+
+![](RSTUDIO_IMAGEN.png){width=70%}
 
 donde pueden ver 4 ventanas, además de la barra de opciones en la parte superior:
 
@@ -47,7 +49,7 @@ La idea es que en esta clase vayan familiarizándose con el uso del lenguaje de 
 2. En RStudio abran el *script* **iris.R** que pueden descargar desde el Campus de la Materia. En ese *script* van a encontrar el código que vamos a usar en la clase de hoy. Vamos a ir repasando qué es lo que hace cada línea del código y ustedes van a tener que responder preguntas a partir de lo que vayan obteniendo. 
    Para no correr todo el código de una vez, la idea es que **copien cada comando que vayan necesitando desde el editor de sintaxis y lo peguen en la consola para ejecutarlo.** También pueden seleccionar el texto y ejecutarlo en la consola directamente con el atajo **Ctrl+Enter**.
 
-Esta dinámica va a permitir que ustedes vayan entendiendo qué hace cada comando y que puedan utilizarlo en el futuro (por ejemplo, para la Entrega 1 😉).
+Esta dinámica va a permitir que ustedes vayan entendiendo qué hace cada comando y que puedan utilizarlo en el futuro (por ejemplo, para la Entrega 1 :) ).
 
 3. En primer lugar, ejecutar (de ahora en más, cada vez que digamos “ejecutar” nos referiremos a copiar, pegar y correr -apretar enter- en la ventana de la consola o usar el atajo Ctrl+Enter en la venta del editor) las líneas
 
@@ -87,7 +89,7 @@ para obtener información sobre el dataset. Esta aparecerá en la ventana **[4]*
 
 7. ¿Cuántas y cuáles son las especies de flores presentes en el dataset? Para responder esta pregunta pueden aplicar el comando unique a la columna Species. Este comando devuelve una lista con los **elementos únicos** del vector en cuestión. Para elegir una variable de un dado *data frame* hay varias opciones, algunas son:
 
-```{r message=FALSE, include=TRUE,results='hide'}
+```{r message=FALSE, include=TRUE}
 data$Species
 data["Species"]
 ```
@@ -99,7 +101,7 @@ Los gráficos de dispersión se utilizan para identificar y mostrar relaciones e
 8. En el próximo punto vamos a pedirles que realicen un gráfico de dispersión (*scatter plot*) del  Ancho del Sépalo (Sepal.Width) vs. el Largo del Sépalo (Sepal.Length). Pero antes, piensen qué tipo de relación esperan encontrar entre estas variables y hagan un gráfico a mano alzada en un papel.
 9. Ahora sí, con el comando
 
-```{r message=FALSE, include=TRUE, results='hide',fig.show='hide'}
+```{r message=FALSE, include=TRUE}
 ggplot(data, aes(x=Sepal.Length, y=Sepal.Width)) + 
 geom_point() + 
 xlab("Largo del Sépalo [cm]") + 
@@ -118,7 +120,7 @@ Una modificación común del gráfico de dispersión es la adición de una **ter
 
 13. Agreguemos al gráfico anterior la información de una **variable** **categórica**. La única variable categórica en este *dataset* es la especie. Para ello ejecutar el código
 
-```{r message=FALSE, include=TRUE, results='hide',fig.show='hide'}
+```{r message=FALSE, include=TRUE}
 ggplot(data, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
 geom_point() + 
 xlab("Largo del Sépalo [cm]") + 
@@ -158,7 +160,7 @@ En el campus pueden encontrar el archivo **citiesdf.RData**, que es el *dataset*
 
 # Para trabajar en casa
 
-Contestá el [Cuestionario de la Clase 1](https://docs.google.com/forms/d/e/1FAIpQLSfwFmuimcOyfgML94H71z5Hlst0skd1SUj8iEbm8uVCwmhEiw/viewform?usp=sf_link) antes de la clase virtual de esta semana.
+Contestá el [Cuestionario de la Clase 1](https://docs.google.com/forms/d/e/1FAIpQLSeR5hxijSKYDWD2ZUji-0Xp6bdKKDF47R-Lls0W1xYB3UaZRQ/viewform?usp=sf_link) antes de la clase virtual de esta semana.
 
 **Instalación de R y RStudio**
 
@@ -168,13 +170,13 @@ Pueden seguir los pasos del siguiente link para instalar tanto R como RStudio en
 
 Si usan Ubuntu [este](https://drive.google.com/file/d/1YmISjlslkLPohDR77MK7HERtv60VwOKq/view?usp=share_link) script para Ubuntu 22 y [este](https://drive.google.com/file/d/1ap4Afwp7KAhZTzuPRm5AZRka_TV5TcmW/view?usp=share_link) para Ubuntu 18 ya lo instala con los paquetes necesarios.
 
-Si tienen problemas de instalación, pueden utilizar “Colab”, una herramienta disponible con su drive. Para ello, usen [este](https://colab.research.google.com/notebook#create=true&language=r) enlace y les abrirá un entorno de ejecución de R en la nube ☁.
+Si tienen problemas de instalación, pueden utilizar “Colab”, una herramienta disponible con su drive. Para ello, usen [este](https://colab.research.google.com/notebook#create=true&language=r) enlace y les abrirá un entorno de ejecución de R en la nube.
 
 ## Para tener en cuenta antes de ponerse a trabajar
 
 Los paquetes que vamos usando en R hay que instalarlos. Por ejemplo, para lo que hicimos en esta guía necesitamos usar el paquete tidyverse que ya habíamos instalado en las compus que usaron en los Laboratorios. Si ese no fuera el caso, antes de eso es necesario instalarlo corriendo en la consola el comando:
 
-```{r message=FALSE, include=TRUE, results='hide'}
+```{r message=FALSE, include=TRUE}
 install.packages("tidyverse")
 ```
 

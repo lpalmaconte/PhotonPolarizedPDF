@@ -1,0 +1,48 @@
+---
+title: "Clase virtual 2"
+format: html
+editor: visual
+---
+
+### Importo librerias y dataset
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+titanic_df <- read_csv("/home/lucas/ICD/2C2023/Clase 2/guia_2_Titanic.csv", locale = locale(decimal_mark = ",")) 
+
+new_titanic_df <- rename(titanic_df, 'Puerto' = 'Port of Embarkation', "padres_hijos"="parents / children aboard the Titanic", "hermanos"="siblings of the passenger")
+```
+
+```{r}
+spec(new_titanic_df)
+```
+
+### Algunas preguntas que podemos responder con `geom_bar`
+
+1.  De los que viajan solos ¿hay mas hombres o mujeres?
+
+```{r}
+ggplot(data = new_titanic_df) + 
+  geom_bar(mapping = aes(x=..., fill=...))
+```
+
+2.  ¿De las personas que viajan solas qué proporción son mujeres?
+
+Para poder ver esto hay que agregar `position = "fill"` al `geom_bar`:
+
+```{r}
+ggplot(data = new_titanic_df) + 
+  geom_bar(mapping = aes(x=alone,fill=who), position="fill")
+```
+
+3.  Que fracción de mujeres viaja sola?
+
+```{r}
+ggplot(data = new_titanic_df) + 
+  geom_bar(mapping = aes(x=who,fill=alone), position="fill") 
+```
+
+Viendo este grafico, ¿puedo afirmar que "la fraccion de hombres que viajan solos es mayor que la fraccion de mujeres"?
