@@ -4,7 +4,7 @@
 
 library(tidyverse)
 
-titanic_df <- read_csv("/home/lucas/ICD/2C2023/Clase 2/guia_2_Titanic.csv", locale = locale(decimal_mark = ","))
+titanic_df <- read_csv("/home/lucaspalma/ICD/2C2023/Clase 2/guia_2_Titanic.csv", locale = locale(decimal_mark = ","))
 #glimpse(titanic_df)
 new_titanic_df <- rename(titanic_df, 'Puerto' = 'Port of Embarkation', "padres_hijos"="parents / children aboard the Titanic", "hermanos"="siblings of the passenger")
 
