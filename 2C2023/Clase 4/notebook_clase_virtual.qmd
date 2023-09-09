@@ -1,0 +1,100 @@
+---
+title: "Clase virtual 7/9"
+format: html
+editor: visual
+---
+
+## Repaso conceptual de distribuciones
+
+```{r}
+library(tidyverse)
+library(ggridges)
+
+titanic_df <- read_csv("/home/lucas/ICD/2C2023/Clase 2/guia_2_Titanic.csv", locale = locale(decimal_mark = ","))
+```
+
+```{r}
+view(titanic_df)
+```
+
+Análisis de precios del Titanic
+
+*Box-plot*
+
+```{r}
+titanic_df %>%  
+  ggplot(aes(x=...)) +
+  geom_jitter(aes(y=1), width=0) +
+  geom_boxplot(aes(y=0), fill='darksalmon')+
+  #geom_violin(aes(y=0),alpha=0.4)+
+  labs(x="...")+
+  scale_y_continuous(name=NULL)
+```
+
+*Histograma*
+
+```{r}
+titanic_df %>%  
+  ggplot(aes(x=fare)) +
+  geom_histogram()+
+  labs(x="Tarifa")+
+  scale_y_continuous(name=NULL)
+```
+
+*Densidad del costo del pasaje*
+
+```{r}
+titanic_df %>%ggplot(aes(x=fare)) +
+  geom_histogram(aes(y=..density..),alpha=0.3)+
+  geom_density(alpha=0.5,bw=15)
+```
+
+### Veamos algunos otros gráficos y que podemos decir de ellos...
+
+Densidades del costo del pasaje agrupado por supervivencia:
+
+```{r}
+##Densidades del costo del pasaje por supervivencia
+
+titanic_df %>%ggplot(aes(x=...,fill=...)) +
+  geom_density(alpha=0.5)+
+#  coord_cartesian(xlim = c(0, 200))+
+  labs(x="Tarifa")
+```
+
+Analizar las siguientes frases:
+
+*"A medida que el costo del pasaje aumenta hay mas sobrevivientes que no sobrevivientes"*
+
+*"A medida que el costo del pasaje aumenta la densidad de supervivencia es mayor"*
+
+Puedo hablar de como son las distribuciones de cada clase y en un rango de tarifas cual tiene mayor densidad
+
+Densidad del costo del pasaje según la edad:
+
+```{r}
+titanic_df %>% 
+  ggplot(aes(x=age, fill=survived)) +
+  geom_density( alpha=0.5, stat='density') 
+```
+
+Analizar las siguientes frases:
+
+*"La mayoría de las personas que NO sobrevivieron tenían entre 20 y 35 años"*
+
+*"En el rango de edad de 0 a 5 años el grupo de sobrevivientes tiene mayor proporción que el de no sobrevivientes"*
+
+Ultimo ejemplo, distribución según la *edad*, categorizado en sobrevivió y en *clase*:
+
+```{r}
+titanic_df %>% 
+  ggplot(aes(x=age, fill=survived, height = stat(density))) +
+  geom_density_ridges(aes(y=class), alpha=0.5, stat='density',scale = 0.9) 
+  #facet_wrap(~survived)
+```
+
+Analizar las siguientes frases:
+
+*"la primera clase es la que menor densidad de muertes presentó"*
+
+*No puedo comparar toda el área de la curva.*
