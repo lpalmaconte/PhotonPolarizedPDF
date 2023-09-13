@@ -75,10 +75,10 @@ titanic_df <- read_csv("/home/lucaspalma/ICD/2C2023/Clase 2/guia_2_Titanic.csv",
 #Una de las herramientas que nos da este paquete es "fct_infreq":
 
 ggplot(data = titanic_df) +
-  geom_bar(mapping = aes(x=who, fill=alone))+
+  geom_bar(mapping = aes(x=fct_infreq(who), fill=alone))+
   ylab("Cantidad de personas")+
   xlab("Sexo")+
-  scale_fill_discrete(name = "Viaje Solo?", labels=c("NO","SI"))
+  scale_fill_discrete(name = "Viaje Solo?")
 
 #Otra forma
 titanic_df %>% mutate(who=who %>% fct_infreq() ) %>% ggplot() + geom_bar(aes(x=who,fill=alone))
