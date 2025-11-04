@@ -1,7 +1,7 @@
  SetDesc: |
   BDSSV24-NNLO polarized PDFs + Polarized Photon PDF.
   The photon pPDF is computed as described in ArXiv:2406.03414
-  and the evolution with QCD+QED corrections as described in
+  and the evolution with QED corrections as described in
   ArXiv:2305.14144 and ArXiv:2505.03520.
  Authors: I. Borsa, D. de Florian, R. Sassot, M. Stratmann, W. Vogelsang fot the original QCD partons, and L. Palma Conte, D. de Florian and G. Volonnino for the photon pPDF part.
  Reference: ArXiv:2407.11635 for the original QCD partons, and ArXiv:2406.03414 for the photon 
